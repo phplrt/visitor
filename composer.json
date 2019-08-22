@@ -1,7 +1,7 @@
 {
     "name": "phplrt/visitor",
     "type": "library",
-    "description": "The phplrt visitor package.",
+    "description": "The phplrt visitor package",
     "license": "MIT",
     "keywords": [
         "ast",
@@ -22,7 +22,7 @@
     ],
     "require": {
         "php": ">=7.1.3",
-        "phplrt/ast-contracts": "~2.0|2.0.x-dev"
+        "phplrt/ast-contracts": "~2.0"
     },
     "autoload": {
         "psr-4": {
