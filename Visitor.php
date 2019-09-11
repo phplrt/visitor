@@ -19,7 +19,7 @@ abstract class Visitor implements VisitorInterface
     /**
      * {@inheritDoc}
      */
-    public function before(NodeInterface $node): ?NodeInterface
+    public function before(iterable $node): ?iterable
     {
         return null;
     }
@@ -43,7 +43,7 @@ abstract class Visitor implements VisitorInterface
     /**
      * {@inheritDoc}
      */
-    public function after(NodeInterface $node): ?NodeInterface
+    public function after(iterable $node): ?iterable
     {
         return null;
     }
