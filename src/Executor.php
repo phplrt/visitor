@@ -55,7 +55,7 @@ class Executor implements ExecutorInterface
      * @var string
      */
     private const ERROR_ROOT_REMOVING =
-        'Visitor::leave() caused the removal of the root node that cannot be deleted';
+        'visitor::leave() caused the removal of the root node that cannot be deleted';
 
     /**
      * @var string

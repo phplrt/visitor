@@ -18,7 +18,7 @@ use PHPUnit\Framework\ExpectationFailedException;
 /**
  * Class VisitorsTestCase
  *
- * @testdox A set of tests that check the interaction of Visitor instances with the Traversable container.
+ * @testdox A set of tests that check the interaction of visitor instances with the Traversable container.
  */
 class VisitorsTestCase extends TestCase
 {

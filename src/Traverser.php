@@ -2,7 +2,7 @@
 
 /**
  * This file is part of phplrt package and is a modified/adapted version of
- * "nikic/PHP-Parser", which is distributed under the following license:
+ * "nikic/PHP-parser", which is distributed under the following license:
  *
  * Copyright (c) 2011-2018 by Nikita Popov.
  *
