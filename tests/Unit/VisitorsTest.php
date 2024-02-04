@@ -2,23 +2,22 @@
 
 declare(strict_types=1);
 
-namespace Phplrt\Visitor\Tests;
+namespace Phplrt\Visitor\Tests\Unit;
 
+use Phplrt\Visitor\Tests\Unit\Stub\Counter;
 use Phplrt\Visitor\Traverser;
-use Phplrt\Visitor\Tests\Stub\Counter;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\ExpectationFailedException;
 
 /**
- * Class VisitorsTestCase
- *
  * @testdox A set of tests that check the interaction of Visitor instances with the Traversable container.
  */
-class VisitorsTestCase extends TestCase
+#[Group('phplrt/visitor'), Group('unit')]
+class VisitorsTest extends TestCase
 {
     /**
      * @testdox Check that the visitor worked if added
      *
-     * @return void
      * @throws ExpectationFailedException
      */
     public function testVisitorAppending(): void
@@ -33,7 +32,6 @@ class VisitorsTestCase extends TestCase
     /**
      * @testdox Check that the several visitor worked if added
      *
-     * @return void
      * @throws ExpectationFailedException
      */
     public function testVisitorsAppending(): void
@@ -50,7 +48,6 @@ class VisitorsTestCase extends TestCase
     /**
      * @testdox Check that the several visitor is ignored if deleted
      *
-     * @return void
      * @throws ExpectationFailedException
      */
     public function testVisitorsRemoving(): void
@@ -66,8 +63,6 @@ class VisitorsTestCase extends TestCase
     }
 
     /**
-     * @param Counter $visitor
-     * @return void
      * @throws ExpectationFailedException
      */
     private function assertWasCalled(Counter $visitor): void
@@ -79,8 +74,6 @@ class VisitorsTestCase extends TestCase
     }
 
     /**
-     * @param Counter $visitor
-     * @return void
      * @throws ExpectationFailedException
      */
     private function assertWasNotCalled(Counter $visitor): void

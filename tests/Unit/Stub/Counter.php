@@ -2,11 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Phplrt\Visitor\Tests\Stub;
+namespace Phplrt\Visitor\Tests\Unit\Stub;
 
-use Phplrt\Visitor\VisitorInterface;
 use Phplrt\Contracts\Ast\NodeInterface;
+use Phplrt\Visitor\VisitorInterface;
 
+/**
+ * @internal This is an internal library class, please do not use it in your code.
+ * @psalm-internal Phplrt\Visitor\Tests\Unit
+ */
 class Counter implements VisitorInterface
 {
     public $before = 0;

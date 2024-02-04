@@ -2,22 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Phplrt\Visitor\Tests;
+namespace Phplrt\Visitor\Tests\Unit;
 
-use Phplrt\Visitor\Tests\Stub\Counter;
+use Phplrt\Visitor\Tests\Unit\Stub\Counter;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\ExpectationFailedException;
 
 /**
- * Class TraversableTestCase
- *
  * @testdox A set of tests that count the number of passes by nodes.
  */
-class TraversableTestCase extends TestCase
+#[Group('phplrt/visitor'), Group('unit')]
+class TraversableTest extends TestCase
 {
     /**
      * @testdox Counting the number of Visitor::before() method calls using AST node
      *
-     * @return void
      * @throws ExpectationFailedException
      */
     public function testNodeBefore(): void
@@ -30,7 +29,6 @@ class TraversableTestCase extends TestCase
     /**
      * @testdox Counting the number of Visitor::before() method calls using array of AST nodes
      *
-     * @return void
      * @throws ExpectationFailedException
      */
     public function testNodesBefore(): void
@@ -43,7 +41,6 @@ class TraversableTestCase extends TestCase
     /**
      * @testdox Counting the number of Visitor::after() method calls using AST node
      *
-     * @return void
      * @throws ExpectationFailedException
      */
     public function testNodeAfter(): void
@@ -56,7 +53,6 @@ class TraversableTestCase extends TestCase
     /**
      * @testdox Counting the number of Visitor::after() method calls using array of AST nodes
      *
-     * @return void
      * @throws ExpectationFailedException
      */
     public function testNodesAfter(): void
@@ -69,7 +65,6 @@ class TraversableTestCase extends TestCase
     /**
      * @testdox Counting the number of Visitor::enter() method calls using AST node
      *
-     * @return void
      * @throws ExpectationFailedException
      */
     public function testNodeEnter(): void
@@ -82,7 +77,6 @@ class TraversableTestCase extends TestCase
     /**
      * @testdox Counting the number of Visitor::enter() method calls using array of AST nodes
      *
-     * @return void
      * @throws ExpectationFailedException
      */
     public function testNodesEnter(): void
@@ -95,7 +89,6 @@ class TraversableTestCase extends TestCase
     /**
      * @testdox Counting the number of Visitor::leave() method calls using AST node
      *
-     * @return void
      * @throws ExpectationFailedException
      */
     public function testNodeLeave(): void
@@ -108,7 +101,6 @@ class TraversableTestCase extends TestCase
     /**
      * @testdox Counting the number of Visitor::leave() method calls using array of AST nodes
      *
-     * @return void
      * @throws ExpectationFailedException
      */
     public function testNodesLeave(): void

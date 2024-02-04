@@ -2,54 +2,49 @@
 
 declare(strict_types=1);
 
-namespace Phplrt\Visitor\Tests\Mutations;
+namespace Phplrt\Visitor\Tests\Unit\Mutations;
 
-use Phplrt\Visitor\Executor;
-use Phplrt\Visitor\Visitor;
-use Phplrt\Visitor\Traverser;
-use Phplrt\Visitor\Tests\TestCase;
-use Phplrt\Visitor\Tests\Stub\Node;
 use Phplrt\Contracts\Ast\NodeInterface;
 use Phplrt\Visitor\Exception\BadMethodException;
+use Phplrt\Visitor\Tests\Unit\Stub\Node;
+use Phplrt\Visitor\Tests\Unit\TestCase;
+use Phplrt\Visitor\Visitor;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\ExpectationFailedException;
 
 /**
- * Class EnteringMutationsTestCase
- *
- * @testdox A set of tests that verify an AST modification using the Visitor::enter() method.
+ * @testdox A set of tests that verify an AST modification using the Visitor::leave() method.
  */
-class EnteringMutationsTestCase extends TestCase
+#[Group('phplrt/visitor'), Group('unit')]
+class LeavingMutationsTest extends TestCase
 {
     /**
      * @testdox Modifying a collection of AST nodes using array return
      *
-     * @return void
+     * @throws ExpectationFailedException
      */
-    public function testUpdateRootsByArrayWhenEntering(): void
+    public function testUpdateRootsByArrayWhenLeaving(): void
     {
-        $this->expectException(BadMethodException::class);
-        $this->expectExceptionCode(Executor::ERROR_CODE_ARRAY_ENTERING);
-
-        $this->traverse($original = $this->nodes(2), new class () extends Visitor {
-            public function enter(NodeInterface $node)
+        $actual = $this->traverse($original = $this->nodes(2), new class () extends Visitor {
+            public function leave(NodeInterface $node)
             {
                 return $node instanceof Node && $node->getId() === 0 ? [] : $node;
             }
         });
+
+        $this->assertSame([], $actual);
+        $this->assertNotSame($original, $actual);
     }
 
     /**
      * @testdox Modifying an AST node using array return
-     *
-     * @return void
      */
-    public function testUpdateRootByArrayWhenEntering(): void
+    public function testUpdateRootByArrayWhenLeaving(): void
     {
         $this->expectException(BadMethodException::class);
-        $this->expectExceptionCode(Executor::ERROR_CODE_ARRAY_ENTERING);
 
         $this->traverse($original = $this->node(), new class () extends Visitor {
-            public function enter(NodeInterface $node)
+            public function leave(NodeInterface $node)
             {
                 return $node instanceof Node && $node->getId() === 0 ? [] : $node;
             }
@@ -59,13 +54,12 @@ class EnteringMutationsTestCase extends TestCase
     /**
      * @testdox Modifying a collection of AST nodes using a new node object return
      *
-     * @return void
      * @throws ExpectationFailedException
      */
-    public function testUpdateRootsByNodeWhenEntering(): void
+    public function testUpdateRootsByNodeWhenLeaving(): void
     {
         $actual = $this->traverse($original = $this->nodes(2), new class () extends Visitor {
-            public function enter(NodeInterface $node)
+            public function leave(NodeInterface $node)
             {
                 return $node instanceof Node && $node->getId() === 0 ? new Node(42) : $node;
             }
@@ -78,13 +72,12 @@ class EnteringMutationsTestCase extends TestCase
     /**
      * @testdox Modifying an AST node using a new node object return
      *
-     * @return void
      * @throws ExpectationFailedException
      */
-    public function testUpdateRootByNodeWhenEntering(): void
+    public function testUpdateRootByNodeWhenLeaving(): void
     {
         $actual = $this->traverse($original = $this->node(), new class () extends Visitor {
-            public function enter(NodeInterface $node)
+            public function leave(NodeInterface $node)
             {
                 return $node instanceof Node && $node->getId() === 0 ? new Node(42) : $node;
             }
