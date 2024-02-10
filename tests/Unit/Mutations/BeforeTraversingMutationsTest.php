@@ -2,29 +2,27 @@
 
 declare(strict_types=1);
 
-namespace Phplrt\Visitor\Tests\Unit\Visitor\Mutations;
+namespace Phplrt\Visitor\Tests\Unit\Mutations;
 
-use Phplrt\Visitor\Tests\Unit\Visitor\Stub\Node;
-use Phplrt\Visitor\Tests\Unit\Visitor\TestCase;
+use Phplrt\Visitor\Tests\Unit\Stub\Node;
+use Phplrt\Visitor\Tests\Unit\TestCase;
 use Phplrt\Visitor\Visitor;
-use PHPUnit\Framework\Attributes\Group;
-use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\ExpectationFailedException;
 
-#[Group('phplrt/visitor'), Group('unit')]
-#[TestDox('A set of tests that verify an AST modification using the Visitor::before() method.')]
+/**
+ * @testdox A set of tests that verify an AST modification using the Visitor::before() method.
+ */
 class BeforeTraversingMutationsTest extends TestCase
 {
     /**
-     * @throws ExpectationFailedException
+     * @testdox Modifying a collection of AST nodes using array return
      */
-    #[TestDox('Modifying a collection of AST nodes using array return')]
     public function testUpdateRootsByArrayWhenEntering(): void
     {
         $actual = $this->traverse($original = $this->nodes(2), new class () extends Visitor {
-            public function before(iterable $nodes): ?iterable
+            public function before(iterable $node): ?iterable
             {
-                return \is_array($nodes) ? [] : null;
+                return \is_array($node) ? [] : null;
             }
         });
 
@@ -33,15 +31,14 @@ class BeforeTraversingMutationsTest extends TestCase
     }
 
     /**
-     * @throws ExpectationFailedException
+     * @testdox Modifying an AST node using array return
      */
-    #[TestDox('Modifying an AST node using array return')]
     public function testUpdateRootByArrayWhenEntering(): void
     {
         $actual = $this->traverse($original = $this->node(), new class () extends Visitor {
-            public function before(iterable $nodes): ?iterable
+            public function before(iterable $node): ?iterable
             {
-                return $nodes instanceof Node && $nodes->getId() === 0 ? [] : $nodes;
+                return $node instanceof Node && $node->getId() === 0 ? [] : $node;
             }
         });
 
@@ -50,15 +47,14 @@ class BeforeTraversingMutationsTest extends TestCase
     }
 
     /**
-     * @throws ExpectationFailedException
+     * @testdox Modifying a collection of AST nodes using a new node object return
      */
-    #[TestDox('Modifying a collection of AST nodes using a new node object return')]
     public function testUpdateRootsByNodeWhenEntering(): void
     {
         $actual = $this->traverse($original = $this->nodes(2), new class () extends Visitor {
-            public function before(iterable $nodes): ?iterable
+            public function before(iterable $node): ?iterable
             {
-                return \is_array($nodes) ? new Node(42) : null;
+                return \is_array($node) ? new Node(42) : null;
             }
         });
 
@@ -67,15 +63,14 @@ class BeforeTraversingMutationsTest extends TestCase
     }
 
     /**
-     * @throws ExpectationFailedException
+     * @testdox Modifying an AST node using a new node object return
      */
-    #[TestDox('Modifying an AST node using a new node object return')]
     public function testUpdateRootByNodeWhenEntering(): void
     {
         $actual = $this->traverse($original = $this->node(), new class () extends Visitor {
-            public function before(iterable $nodes): ?iterable
+            public function before(iterable $node): ?iterable
             {
-                return $nodes instanceof Node && $nodes->getId() === 0 ? new Node(42) : $nodes;
+                return $node instanceof Node && $node->getId() === 0 ? new Node(42) : $node;
             }
         });
 

@@ -2,22 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Phplrt\Visitor\Tests\Unit\Visitor;
+namespace Phplrt\Visitor\Tests\Unit;
 
-use Phplrt\Visitor\Tests\Unit\Visitor\Stub\Counter;
+use Phplrt\Visitor\Tests\Unit\Stub\Counter;
 use Phplrt\Visitor\Traverser;
-use PHPUnit\Framework\Attributes\Group;
-use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\ExpectationFailedException;
 
-#[Group('phplrt/visitor'), Group('unit')]
-#[TestDox('A set of tests that check the interaction of Visitor instances with the Traversable container.')]
+/**
+ * @testdox A set of tests that check the interaction of Visitor instances with the Traversable container.
+ */
 class VisitorsTest extends TestCase
 {
     /**
-     * @throws ExpectationFailedException
+     * @testdox Check that the visitor worked if added
      */
-    #[TestDox('Check that the visitor worked if added')]
     public function testVisitorAppending(): void
     {
         (new Traverser())
@@ -28,9 +26,8 @@ class VisitorsTest extends TestCase
     }
 
     /**
-     * @throws ExpectationFailedException
+     * @testdox Check that the several visitor worked if added
      */
-    #[TestDox('Check that the several visitor worked if added')]
     public function testVisitorsAppending(): void
     {
         (new Traverser())
@@ -43,9 +40,8 @@ class VisitorsTest extends TestCase
     }
 
     /**
-     * @throws ExpectationFailedException
+     * @testdox Check that the several visitor is ignored if deleted
      */
-    #[TestDox('Check that the several visitor is ignored if deleted')]
     public function testVisitorsRemoving(): void
     {
         (new Traverser())
@@ -58,9 +54,6 @@ class VisitorsTest extends TestCase
         $this->assertWasCalled($b);
     }
 
-    /**
-     * @throws ExpectationFailedException
-     */
     private function assertWasCalled(Counter $visitor): void
     {
         $this->assertGreaterThan(0, $visitor->before);
@@ -69,9 +62,6 @@ class VisitorsTest extends TestCase
         $this->assertGreaterThan(0, $visitor->leave);
     }
 
-    /**
-     * @throws ExpectationFailedException
-     */
     private function assertWasNotCalled(Counter $visitor): void
     {
         $this->assertSame(0, $visitor->before);
