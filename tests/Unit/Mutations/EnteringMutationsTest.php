@@ -10,7 +10,6 @@ use Phplrt\Visitor\Executor;
 use Phplrt\Visitor\Tests\Unit\Stub\Node;
 use Phplrt\Visitor\Tests\Unit\TestCase;
 use Phplrt\Visitor\Visitor;
-use PHPUnit\Framework\ExpectationFailedException;
 
 /**
  * @testdox A set of tests that verify an AST modification using the Visitor::enter() method.

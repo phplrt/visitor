@@ -13,24 +13,14 @@ class Node implements NodeInterface
      */
     public array $children;
 
-    /**
-     * @var int
-     */
     private int $id;
 
-    /**
-     * @param int $id
-     * @param array $children
-     */
     public function __construct(int $id, array $children = [])
     {
         $this->id = $id;
         $this->children = $children;
     }
 
-    /**
-     * @return int
-     */
     public function getId(): int
     {
         return $this->id;
@@ -44,9 +34,6 @@ class Node implements NodeInterface
         return new \ArrayIterator(['children' => $this->children]);
     }
 
-    /**
-     * @return int
-     */
     public function getOffset(): int
     {
         return 0;

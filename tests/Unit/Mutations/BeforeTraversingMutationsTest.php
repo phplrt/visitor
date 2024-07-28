@@ -7,7 +7,6 @@ namespace Phplrt\Visitor\Tests\Unit\Mutations;
 use Phplrt\Visitor\Tests\Unit\Stub\Node;
 use Phplrt\Visitor\Tests\Unit\TestCase;
 use Phplrt\Visitor\Visitor;
-use PHPUnit\Framework\ExpectationFailedException;
 
 /**
  * @testdox A set of tests that verify an AST modification using the Visitor::before() method.
