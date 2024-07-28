@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Phplrt\Visitor\Tests\Unit;
 
 use Phplrt\Visitor\Tests\Unit\Stub\Counter;
+use PHPUnit\Framework\ExpectationFailedException;
 
 /**
  * @testdox A set of tests that count the number of passes by nodes.

@@ -6,6 +6,7 @@ namespace Phplrt\Visitor\Tests\Unit;
 
 use Phplrt\Visitor\Tests\Unit\Stub\Counter;
 use Phplrt\Visitor\Traverser;
+use PHPUnit\Framework\ExpectationFailedException;
 
 /**
  * @testdox A set of tests that check the interaction of Visitor instances with the Traversable container.

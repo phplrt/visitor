@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Phplrt\Visitor;
 
+use Phplrt\Contracts\Ast\NodeInterface;
+
 /**
  * The TraverserInterface allows to traverse groups of
  * nodes using visitor sets.
@@ -73,7 +75,6 @@ interface TraverserInterface
      * registered visitors.
      *
      * @param iterable<array-key, object> $nodes
-     *
      * @return iterable<array-key, object>
      */
     public function traverse(iterable $nodes): iterable;
