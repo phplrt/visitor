@@ -47,17 +47,11 @@ namespace Phplrt\Visitor;
 class Traverser implements TraverserInterface
 {
     /**
-     * @var list<VisitorInterface>
-     */
-    private array $visitors = [];
-
-    /**
      * @param list<VisitorInterface> $visitors
      */
-    final public function __construct(array $visitors = [])
-    {
-        $this->visitors = $visitors;
-    }
+    final public function __construct(
+        private array $visitors = [],
+    ) {}
 
     public static function through(VisitorInterface ...$visitors): self
     {
@@ -66,7 +60,7 @@ class Traverser implements TraverserInterface
 
     public function with(VisitorInterface $visitor, bool $prepend = false): TraverserInterface
     {
-        $fn = $prepend ? '\\array_unshift' : '\\array_push';
+        $fn = $prepend ? \array_unshift(...) : \array_push(...);
         $fn($this->visitors, $visitor);
 
         return $this;
