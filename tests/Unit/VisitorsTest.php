@@ -8,7 +8,7 @@ use Phplrt\Visitor\Tests\Unit\Stub\Counter;
 use Phplrt\Visitor\Traverser;
 use PHPUnit\Framework\Attributes\TestDox;
 
-#[TestDox('A set of tests that check the interaction of Visitor instances with the Traversable container.')]
+#[TestDox('A set of tests that check the interaction of Visitor instances with the Traversable container')]
 class VisitorsTest extends TestCase
 {
     #[TestDox('Check that the visitor worked if added')]

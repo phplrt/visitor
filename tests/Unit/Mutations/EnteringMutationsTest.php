@@ -12,7 +12,7 @@ use Phplrt\Visitor\Tests\Unit\TestCase;
 use Phplrt\Visitor\Visitor;
 use PHPUnit\Framework\Attributes\TestDox;
 
-#[TestDox('A set of tests that verify an AST modification using the Visitor::enter() method.')]
+#[TestDox('A set of tests that verify an AST modification using the Visitor::enter() method')]
 class EnteringMutationsTest extends TestCase
 {
     #[TestDox('Modifying a collection of AST nodes using array return')]

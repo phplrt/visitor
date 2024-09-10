@@ -11,7 +11,7 @@ use Phplrt\Visitor\Tests\Unit\TestCase;
 use Phplrt\Visitor\Visitor;
 use PHPUnit\Framework\Attributes\TestDox;
 
-#[TestDox('A set of tests that verify an AST modification using the Visitor::leave() method.')]
+#[TestDox('A set of tests that verify an AST modification using the Visitor::leave() method')]
 class LeavingMutationsTest extends TestCase
 {
     #[TestDox('Modifying a collection of AST nodes using array return')]
