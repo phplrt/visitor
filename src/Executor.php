@@ -118,9 +118,9 @@ class Executor implements ExecutorInterface
 
     public function __construct(
         /**
-         * @var array|VisitorInterface[]
+         * @var array<array-key, VisitorInterface>
          */
-        private array $visitors = []
+        private readonly array $visitors = [],
     ) {}
 
     /**

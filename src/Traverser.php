@@ -60,7 +60,7 @@ class Traverser implements TraverserInterface
 
     public function with(VisitorInterface $visitor, bool $prepend = false): TraverserInterface
     {
-        $fn = $prepend ? \array_unshift(...) : \array_push(...);
+        $fn = $prepend ? '\\array_unshift' : '\\array_push';
         $fn($this->visitors, $visitor);
 
         return $this;

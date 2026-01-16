@@ -9,7 +9,7 @@ use Phplrt\Visitor\Tests\Unit\TestCase;
 use Phplrt\Visitor\Visitor;
 use PHPUnit\Framework\Attributes\TestDox;
 
-#[TestDox('A set of tests that verify an AST modification using the Visitor::before() method.')]
+#[TestDox('A set of tests that verify an AST modification using the Visitor::before() method')]
 class BeforeTraversingMutationsTest extends TestCase
 {
     #[TestDox('Modifying a collection of AST nodes using array return')]
