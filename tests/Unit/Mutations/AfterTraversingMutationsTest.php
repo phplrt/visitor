@@ -9,16 +9,16 @@ use Phplrt\Visitor\Tests\Unit\TestCase;
 use Phplrt\Visitor\Visitor;
 use PHPUnit\Framework\Attributes\TestDox;
 
-#[TestDox('A set of tests that verify an AST modification using the Visitor::after() method')]
+#[TestDox('A set of tests that verify an AST modification using the Visitor::after() method.')]
 class AfterTraversingMutationsTest extends TestCase
 {
     #[TestDox('Modifying a collection of AST nodes using array return')]
     public function testUpdateRootsByArrayWhenEntering(): void
     {
         $actual = $this->traverse($original = $this->nodes(2), new class () extends Visitor {
-            public function after(iterable $node): ?iterable
+            public function after(iterable $nodes): ?iterable
             {
-                return \is_array($node) ? [] : null;
+                return \is_array($nodes) ? [] : null;
             }
         });
 
@@ -30,9 +30,9 @@ class AfterTraversingMutationsTest extends TestCase
     public function testUpdateRootByArrayWhenEntering(): void
     {
         $actual = $this->traverse($original = $this->node(), new class () extends Visitor {
-            public function after(iterable $node): ?iterable
+            public function after(iterable $nodes): ?iterable
             {
-                return $node instanceof Node && $node->getId() === 0 ? [] : $node;
+                return $nodes instanceof Node && $nodes->getId() === 0 ? [] : $nodes;
             }
         });
 
@@ -44,9 +44,9 @@ class AfterTraversingMutationsTest extends TestCase
     public function testUpdateRootsByNodeWhenEntering(): void
     {
         $actual = $this->traverse($original = $this->nodes(2), new class () extends Visitor {
-            public function after(iterable $node): ?iterable
+            public function after(iterable $nodes): ?iterable
             {
-                return \is_array($node) ? new Node(42) : null;
+                return \is_array($nodes) ? new Node(42) : null;
             }
         });
 
@@ -58,9 +58,9 @@ class AfterTraversingMutationsTest extends TestCase
     public function testUpdateRootByNodeWhenEntering(): void
     {
         $actual = $this->traverse($original = $this->node(), new class () extends Visitor {
-            public function after(iterable $node): ?iterable
+            public function after(iterable $nodes): ?iterable
             {
-                return $node instanceof Node && $node->getId() === 0 ? new Node(42) : $node;
+                return $nodes instanceof Node && $nodes->getId() === 0 ? new Node(42) : $nodes;
             }
         });
 

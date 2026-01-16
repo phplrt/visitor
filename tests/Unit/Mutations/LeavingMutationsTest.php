@@ -11,14 +11,14 @@ use Phplrt\Visitor\Tests\Unit\TestCase;
 use Phplrt\Visitor\Visitor;
 use PHPUnit\Framework\Attributes\TestDox;
 
-#[TestDox('A set of tests that verify an AST modification using the Visitor::leave() method')]
+#[TestDox('A set of tests that verify an AST modification using the Visitor::leave() method.')]
 class LeavingMutationsTest extends TestCase
 {
     #[TestDox('Modifying a collection of AST nodes using array return')]
     public function testUpdateRootsByArrayWhenLeaving(): void
     {
         $actual = $this->traverse($original = $this->nodes(2), new class () extends Visitor {
-            public function leave(NodeInterface $node): mixed
+            public function leave(NodeInterface $node)
             {
                 return $node instanceof Node && $node->getId() === 0 ? [] : $node;
             }
@@ -34,7 +34,7 @@ class LeavingMutationsTest extends TestCase
         $this->expectException(BadMethodException::class);
 
         $this->traverse($original = $this->node(), new class () extends Visitor {
-            public function leave(NodeInterface $node): mixed
+            public function leave(NodeInterface $node)
             {
                 return $node instanceof Node && $node->getId() === 0 ? [] : $node;
             }
@@ -45,7 +45,7 @@ class LeavingMutationsTest extends TestCase
     public function testUpdateRootsByNodeWhenLeaving(): void
     {
         $actual = $this->traverse($original = $this->nodes(2), new class () extends Visitor {
-            public function leave(NodeInterface $node): mixed
+            public function leave(NodeInterface $node)
             {
                 return $node instanceof Node && $node->getId() === 0 ? new Node(42) : $node;
             }
@@ -59,7 +59,7 @@ class LeavingMutationsTest extends TestCase
     public function testUpdateRootByNodeWhenLeaving(): void
     {
         $actual = $this->traverse($original = $this->node(), new class () extends Visitor {
-            public function leave(NodeInterface $node): mixed
+            public function leave(NodeInterface $node)
             {
                 return $node instanceof Node && $node->getId() === 0 ? new Node(42) : $node;
             }
